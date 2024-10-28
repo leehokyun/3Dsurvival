@@ -17,7 +17,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     Condition health { get { return uiCondition.health; } } //외부에서 health에 접근하려하면 uiCondition에 있는 health값을 반환해준다.
     Condition hunger { get { return uiCondition.hunger; } }
     Condition stamina {  get { return uiCondition.stamina; } }
-
+    
 
     public float noHungerHealthDecay;
 
@@ -42,6 +42,11 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }    
     }
 
+    public void SpeedUp(float amount)
+    {
+        CharacterManager.Instance.Player.moveSpeed = CharacterManager.Instance.Player.moveSpeedUp(amount);
+    }
+
     public void Heal(float amount)
     {
         health.Add(amount);
@@ -51,7 +56,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         hunger.Add(amount);
     }
-
     public void Die()
     {
         Debug.Log("죽었다");
@@ -75,4 +79,5 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         stamina.Subtract(amount);
         return true;
     }
+
 }

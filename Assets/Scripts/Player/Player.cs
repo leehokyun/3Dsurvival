@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public ItemData itemData;
     public Action addItem;
 
+    public float moveSpeed;
+
     public Transform dropPosition;
 
     private void Awake()
@@ -20,5 +22,11 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>(); //같은 인스펙터창 안에 있으니까 그냥 컴포넌트를 가져와버림
         condition = GetComponent<PlayerCondition>();
         equip = GetComponent<Equipment>();
+    }
+
+    public float moveSpeedUp(float speedMultiple)
+    {
+        moveSpeed *= speedMultiple;
+        return moveSpeed;
     }
 }
