@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Item_Cake
   m_EditorClassIdentifier: 
   displayName: "\uC2A4\uD53C\uB4DC \uCF00\uC774\uD06C"
-  description: "\uBA39\uC73C\uBA74 30\uCD08\uAC04 \uC774\uB3D9 \uC18D\uB3C4\uAC00
-    \uBE68\uB77C\uC9C0\uB294 \uCF00\uC774\uD06C"
+  description: "\uBA39\uC73C\uBA74 10\uCD08\uAC04 \uC774\uB3D9 \uC18D\uB3C4\uAC00
+    5\uBC30 \uBD80\uC2A4\uD2B8"
   type: 1
   icon: {fileID: 21300000, guid: 8fd88de76662fa94ca09c895a8bb3b72, type: 3}
   dropPrefab: {fileID: 5655318872142085994, guid: f8f39ff1877ec7c43add11dc1f0819aa, type: 3}
@@ -22,5 +22,5 @@ MonoBehaviour:
   maxStackAmount: 12
   consumables:
   - type: 2
-    value: 3
+    value: 5
   equipPrefab: {fileID: 0}

@@ -17,18 +17,23 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public UICondition uiCondition;
 
     Condition health { get { return uiCondition.health; } } //외부에서 health에 접근하려하면 uiCondition에 있는 health값을 반환해준다.
+    Condition dashEnergy {  get { return uiCondition.dashEnergy; } }
+    Condition jumpEnergy { get { return uiCondition.jumpEnergy; } }
+
     Condition hunger { get { return uiCondition.hunger; } }
     Condition stamina {  get { return uiCondition.stamina; } }
+
+
     
 
     public float noHungerHealthDecay;
 
     public event Action onTakeDamage;
 
-    void Awake()
-    {
-        controller = player.GetComponent<PlayerController>();
-    }
+    //void Awake()
+    //{
+    //    controller = player.GetComponent<PlayerController>();
+    //}
 
     // Update is called once per frame
     void Update()

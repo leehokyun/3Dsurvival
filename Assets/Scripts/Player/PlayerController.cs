@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // 기능이 활성화되어 있고 일정 시간이 경과하면 기능을 비활성화합니다.
-        if (isFunctionActive && Time.time - startTime >= 5f)
+        // StartSpeedUp 시간 조절 기능. 기능이 활성화되어 있고 일정 시간이 경과하면 기능을 비활성화합니다.
+        if (isFunctionActive && Time.time - startTime >= 10f)
         {
             StopSpeedUp();
         }
