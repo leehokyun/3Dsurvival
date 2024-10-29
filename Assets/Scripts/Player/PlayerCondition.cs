@@ -30,11 +30,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     public event Action onTakeDamage;
 
-    //void Awake()
-    //{
-    //    controller = player.GetComponent<PlayerController>();
-    //}
-
     // Update is called once per frame
     void Update()
     {
