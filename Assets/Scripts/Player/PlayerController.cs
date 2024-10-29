@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
     float originalSpeed;
 
+
+    float useJumpEnergy = 5f;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -119,11 +122,24 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started & IsGrounded())
+        if (context.phase == InputActionPhase.Started & IsGrounded() && CharacterManager.Instance.Player.condition.UseJumpEnergy(useJumpEnergy))
         {
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
+
+    //public override void OnAttackInput()
+    //{
+    //    if (!attacking)
+    //    {
+    //        if (CharacterManager.Instance.Player.condition.UseStamina(useStamina))
+    //        {
+    //            attacking = true;
+    //            animator.SetTrigger("Attack");
+    //            Invoke("OnCanAttack", attackRate);
+    //        }
+    //    }
+    //}
 
     bool IsGrounded()
     {

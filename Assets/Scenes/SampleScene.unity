@@ -3063,6 +3063,7 @@ MonoBehaviour:
   equip: {fileID: 0}
   itemData: {fileID: 0}
   moveSpeed: 0
+  useJumpEnergy: 0
   dropPosition: {fileID: 703502164}
 --- !u!114 &942997508
 MonoBehaviour:
@@ -6636,6 +6637,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 237778443}
+  dashEnergy: {fileID: 1292578377}
+  jumpEnergy: {fileID: 1297490290}
   hunger: {fileID: 841517975}
   stamina: {fileID: 793707563}
 --- !u!1001 &1950539606

@@ -41,7 +41,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         // 컨디션 값에 지속적으로 변화를 주는 함수
         hunger.Subtract(hunger.passiveValue * Time.deltaTime);
         stamina.Add(stamina.passiveValue * Time.deltaTime);
-
+        jumpEnergy.Add(jumpEnergy.passiveValue * Time.deltaTime);
 
         if (hunger.curValue <= 0f)
         {
@@ -84,6 +84,28 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }
 
         stamina.Subtract(amount);
+        return true;
+    }
+
+    public bool UseJumpEnergy(float amount)
+    {
+        if (jumpEnergy.curValue - amount < 0f)
+        {
+            return false;
+        }
+
+        jumpEnergy.Subtract(amount);
+        return true;
+    }
+
+    public bool UseDashEnergy(float amount)
+    {
+        if (dashEnergy.curValue - amount < 0f)
+        {
+            return false;
+        }
+
+        dashEnergy.Subtract(amount);
         return true;
     }
 
