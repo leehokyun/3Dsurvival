@@ -49,11 +49,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         }    
     }
 
-    public void SpeedUp(float amount)
-    {
-        controller.moveSpeedUp(amount);
-    }
-
     public void Heal(float amount)
     {
         health.Add(amount);

@@ -26,14 +26,29 @@ public class PlayerController : MonoBehaviour
     public bool canLook = true;
     public Action Inventory;
 
+    bool isFunctionActive = false;
+    float startTime;
+
+    float originalSpeed;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        originalSpeed = moveSpeed;
     }
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; //마우스 커서 보이지 않게 함
+    }
+
+    private void Update()
+    {
+        // 기능이 활성화되어 있고 일정 시간이 경과하면 기능을 비활성화합니다.
+        if (isFunctionActive && Time.time - startTime >= 5f)
+        {
+            StopSpeedUp();
+        }
     }
 
     void FixedUpdate()
@@ -49,9 +64,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void moveSpeedUp(float speedMultiple)
+    public void StartSpeedUp(float speedMultiple)
     {
+        // 기능을 활성화하고 시작 시간을 기록합니다.
+        isFunctionActive = true;
         moveSpeed *= speedMultiple;
+        startTime = Time.time;
+    }
+
+    public void StopSpeedUp()
+    {
+        // 기능을 비활성화합니다.
+        moveSpeed = originalSpeed;
+        isFunctionActive = false;
     }
 
     void Move()
