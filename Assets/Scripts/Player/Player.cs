@@ -24,9 +24,8 @@ public class Player : MonoBehaviour
         equip = GetComponent<Equipment>();
     }
 
-    public float moveSpeedUp(float speedMultiple)
+    public void moveSpeedUp(float speedMultiple)
     {
-        moveSpeed *= speedMultiple;
-        return moveSpeed;
+        CharacterManager.Instance.Player.moveSpeed *= speedMultiple;
     }
 }

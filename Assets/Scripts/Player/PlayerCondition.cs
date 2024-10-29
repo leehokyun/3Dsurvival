@@ -10,7 +10,9 @@ public interface IDamageable
 
 public class PlayerCondition : MonoBehaviour, IDamageable
 {
-    
+
+    public GameObject player;
+    public PlayerController controller;
 
     public UICondition uiCondition;
 
@@ -22,6 +24,11 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public float noHungerHealthDecay;
 
     public event Action onTakeDamage;
+
+    void Awake()
+    {
+        controller = player.GetComponent<PlayerController>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -44,7 +51,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     public void SpeedUp(float amount)
     {
-        CharacterManager.Instance.Player.moveSpeed = CharacterManager.Instance.Player.moveSpeedUp(amount);
+        controller.moveSpeedUp(amount);
     }
 
     public void Heal(float amount)

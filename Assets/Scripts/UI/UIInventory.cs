@@ -209,7 +209,7 @@ public class UIInventory : MonoBehaviour
                         condition.Eat(selectedItem.consumables[i].value);
                         break;
                     case ConsumableType.SpeedUp:
-                        condition.SpeedUp(selectedItem.consumables[i].value);
+                        controller.moveSpeedUp(selectedItem.consumables[i].value);
                         break;
                 }
             }

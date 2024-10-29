@@ -49,10 +49,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void moveSpeedUp(float speedMultiple)
+    {
+        moveSpeed *= speedMultiple;
+    }
+
     void Move()
     {
-        moveSpeed = CharacterManager.Instance.Player.moveSpeed;
-
+        Debug.Log("moveSpeed: " + moveSpeed);
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x; //방향값을 정하고
         dir *= moveSpeed; //방향에 속력(speed)을 곱해준다.
         dir.y = _rigidbody.velocity.y; //벨로시티에 있는 y값을 넣는 이유는, 점프를 했을때만 위아래로 움직여야하기에, 미세한 값을 유지시키기 위해 넣는다.
