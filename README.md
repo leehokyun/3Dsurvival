@@ -15,6 +15,16 @@
 Q1-1
 입문 주차와 비교해서 입력 받는 방식의 차이와 공통점을 비교해보세요.
   A.
+  입문주차의 입력 받는 방식:
+  인풋시스템의 SendMessage기능을 통해 전역적으로 메서드에 접근한뒤, 문자열을 비교해서 메서드를 호출하는 방식이다.
+  런타임 성능에 비효율적일 수있다.
+  SendMessage를 통해 Action Event가 실행되면 해당 Action을 구독중인 각각의 메서드가 호출되는 방식이다.
+    
+  숙련주차의 입력 받는 방식:
+  InputSystem과 Event를 직접 연결해서 특정 메서드를 호출한다. 성능이 좋고 관리가 쉽다.
+  
+  공통점은 둘다 InputSystem을 통해 입력받는다는 점.
+
 
 Q1-2 
 `CharacterManager`와 `Player`의 역할에 대해 고민해보세요.
@@ -30,19 +40,19 @@ Q1-3
 핵심 로직을 분석해보세요 (`Move`, `CameraLook`, `IsGrounded`)
   A. 
      MOVE:
-     PlayerController에서는 Move가 지속적으로 FixedUpdate되고 있다.
-     플레이어가 상하좌우 키 Input을 받으면 -> InputSystem에 연결된 MOVE Event가 실행되고 -> OnMove()함수가 실행되어서 -> 
-     현재 움직임 인풋 값에 방향벡터 값을 받고 -> 그 방향벡터값이 실시간으로 fixedupdate되는 Move 메서드에 반영된다. -> Move()메서드에서는 방향값을 정하고 그 방향에 속력(speed)을 곱해준다. 그 값이 rigidbody의 velocity에 반영되면서 플레이어가 이동한다.
+     InputSystem에서 WASD키값에 각각의 이벤트를 연결하여 등록해놓는다.
+     키입력이 들어갈때마다 벡터값이 변하고 그 값을 통해, 리지드바디의 속도값에다가 Vector3값을 넣어주는 함수를
+     지속적으로 FixedUpdate해주게 됨으로써 플레이어가 이동하게된다.     
   A.
      CameraLook:
-     CameraLook()은 지속적으로 LateUpdate되고 있다.
-     마우스 위치값이 변경되면 -> InputSystem에 연결된 Look Event가 실행되고 -> OnLook()함수가 실행된다. ->
-     현재 마우스 인풋 값을 받고 -> 
-     
-          
+     InputSystem에서 마우스델타값 변화에 따라 호출되는 이벤트를 연결하여 등록해놓는다.
+     마우스델타값이 변할 때 카메라의 각도도 변하게 한다. 
+  A.
+     IsGrounded:
+     플레이어의 아래쪽으로 레이를 4개 쏴서, 레이어마스크를 식별한다. 레이어마스크가 Ground인지 여부를 true false로 반환한다.   
   
-
-- `Move`와 `CameraLook` 함수를 각각 `FixedUpdate`, `LateUpdate`에서 호출하는 이유에 대해 생각해보세요.
+Q1-4 
+`Move`와 `CameraLook` 함수를 각각 `FixedUpdate`, `LateUpdate`에서 호출하는 이유에 대해 생각해보세요.
 
 
 입문주차에서는 입력받는 방식이
