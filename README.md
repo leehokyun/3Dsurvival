@@ -85,8 +85,18 @@ Q2-2
 
 Q2-3
 핵심 로직을 분석해보세요. (UI 스크립트 구조, `CampFire`, `DamageIndicator`)
+  A. Condition 클래스를 통해 플레이어가 아니더라도 모든 클래스들의 
+     다양한 상태(예: 체력, 스태미나, 허기, 에너지 레벨)를 관리하고 UI를 업데이트한다.
+     Condition 데이터가 정의된 Condition 클래스. 여기서는 값의 증감을 관리하고 UI상에 퍼센트가 반영되도록 한다.
+     PlayerCondition에서는 플레이어의 전체상태를 관리한다. 값을 지속적으로 깎거나 추가하는 등 업데이트한다.
+     값과 상태를 관리하여 플레이어 상태를 관리한다.
+     uiCondition은 Condition의 객체들을 묶어서 UI에서 한번에 관리할 수 있도록 한다.
+     Condition에 있는 health, hunger, stamina 각각의 상태를 PlayerCondition클래스가 간접적으로 접근할 수 있게 했다.
 
+  A. CampFire는 OnTriggerEnter될 경우 IDamageable을 갖고있는 콜라이더의 체력을 깎는다.
 
+  A. DamageIndicator는 onTakeDamage이벤트가 외부에서 실행될 경우, Flash()메서드가 호출되어 화면에 빨간 플래시 효과를 표시하는 구조다.
+     코루틴을 사용하여 시간이 지날 때 자연스럽게 색깔이 변화하도록 하였다.(연속적인 변화처리)
 
 
 ### Q3. 숙련 9강 ~ 숙련 11강
@@ -95,6 +105,18 @@ Q2-3
 
 - `Interaction` 기능의 구조와 핵심 로직을 분석해보세요.
 - `Inventory` 기능의 구조와 핵심 로직을 분석해보세요.
+Q3-1
+  A. Interaction: 지속적으로 카메라 스크린 중앙에 Ray를 쏴서 IInteractable 인터페이스를 갖고있는 object인지 확인한다. 만약 맞다면, 그 오브젝트의 정보를 캐싱해온다.(가져온다) 화면상에는 그 object를 설명하는 Text를 띄운다. E키를 누르면 그 객체와 상호작용이 실행된다.
+     
+Q3-2
+  A. Inventory는 UI관련 기능을 관리하고, 아이템을 표시하고, 아이템 사용 장착 버리기 동작을 제어한다.
+    아이템 관리, UI업데이트, 인터렉션을 제어한다.
+    slots 배열과 slotPanel트랜스폼을 사용해 인벤토리의 각 슬롯을 관리한다. slots에는 아이템을 담을 수 있게 해놓은 ItemSlot배열을 통해
+    인벤토리 창의 각 위치에 아이템 정보를 표시한다.
+    선택된 아이템의 이름과설명,속성등의 정보를 표시한다.
+    아이템의 타입과 장착상태에 따라 usebutton, equip, unequip, drop 버튼을 활성화한다.
+    Start메서드에서 CharacterManager.Instance.Player.controller.Inventory와 CharacterManager.Instance.Player.addItem 
+    이벤트에 구독하여 인벤토리를 여닫는 기능과 아이템 추가 기능을 초기화한다.
 
 ------------------------------------------------------------------------
 
