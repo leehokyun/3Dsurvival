@@ -6,11 +6,12 @@ public class Resource : MonoBehaviour
 {
 
     public ItemData itemToGive;
-    public int quantityPerHit = 1;
+    public int quantityPerHit = 10;
     public int capacy;
 
     public void Gather(Vector3 hitPoint, Vector3 hitNormal)
     {
+        Debug.Log(quantityPerHit);
         for (int i = 0; i < quantityPerHit; i++)
         {
             if (capacy <= 0) break;
